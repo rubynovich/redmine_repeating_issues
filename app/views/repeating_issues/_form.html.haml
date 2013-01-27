@@ -1,0 +1,8 @@
+= error_messages_for @repeating_issue
+.box.tabular
+  = back_url_hidden_field_tag
+  = f.hidden_field :issue_id
+  
+  %p= f.select :periodicity, periodicity_variants_for_select, :required => true, :size => 20  
+  %p= f.select :operation, operation_variants_for_select, :required => true, :size => 20
+

@@ -1,0 +1,26 @@
+%h2=l(:label_repeating_issue_plural)
+
+- if @repeating_issues.any?
+  %table.list
+    %thead
+      %tr
+        %th=l(:field_issue)
+        %th=l(:field_project)
+        %th=l(:field_periodicity)
+        %th=l(:field_operation)
+        %th
+    %tbody
+      - for repeating_issue in @repeating_issues
+        %tr{:class=>cycle("odd", "even")}
+          %td= link_to_issue repeating_issue.issue
+          %td= link_to_project repeating_issue.project
+          %td= periodicity_variants(repeating_issue.periodicity)
+          %td= operation_variants(repeating_issue.operation)
+          %td.buttons
+            = link_to l(:button_update), {:action => 'edit', :id => repeating_issue.id}, :class => 'icon icon-edit'        
+            = link_to(l(:button_delete), repeating_issue_path(repeating_issue), :method => :delete, :confirm => l(:text_are_you_sure), :class => 'icon icon-del')
+- else
+  %p.nodata
+    = l(:label_no_data)
+
+- html_title(l(:label_repeating_issue_plural))
