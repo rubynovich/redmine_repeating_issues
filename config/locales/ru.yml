@@ -6,6 +6,7 @@ ru:
   field_operation: "Способ зацикливания"
   label_repeating_issue_plural: "Зацикленные задачи"
   label_repeating_issue_new: "Новая зацикленная задача"
+  permission_manage_repeating_issues: "Управление зацикленными задачами"  
   list_repeating_issues:
     periodicity_variants:
       weekly: "Еженедельно"

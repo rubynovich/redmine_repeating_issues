@@ -1,3 +1,23 @@
-= repeating_issues
+= Циклические задачи (плагин для Redmine)
 
-Description goes here
+Плагин позволяет создавать повторяющиеся задачи путем их пересоздания или повторного открытия. Срабатывает только после закрытия задачи. Периоды пересоздания/переоткрытия: еженедельно (на тот же день недели), ежемесячно (на тот же день месяца), ежегодно (на тот же день года).
+
+Чтобы работать с плагином, у пользователя должны быть установлены права "Управление зацикленными задачами". 
+
+Если закрыть задачу, дата начала которой еще не наступила, то плагин не срабатывает.
+
+= Repeating Issues Plugin for Redmine
+
+The plugin allows you to do repeating issues (reopen or recreate) 
+
+== Installation
+
+  cd vendor/plugins
+  git clone git://github.com/rubynovich/redmine_repeating_issues.git
+  cd ../..
+  rake db:migrate:plugin NAME=redmine_repeating_issues RAILS_ENV=production
+  
+== Update
+
+  cd vendor/plugins/redmine_repeating_issues
+  git pull
