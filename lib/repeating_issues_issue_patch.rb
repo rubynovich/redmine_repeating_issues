@@ -29,7 +29,7 @@ module RepeatingIssuesPlugin
             start_date += 1.month
           when "yearly"
             start_date += 1.year
-        end until start_date >= Date.today
+        end until start_date > Date.today
         due_date = start_date + (self.due_date - self.start_date)
         case self.repeating_issue.operation
           when "reopen"
