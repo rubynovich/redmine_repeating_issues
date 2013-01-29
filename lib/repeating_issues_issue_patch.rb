@@ -20,16 +20,21 @@ module RepeatingIssuesPlugin
     end
     
     module InstanceMethods
-      def repeate_issue
-        start_date = self.start_date
+      def case_periodicity
         case self.repeating_issue.periodicity
           when "weekly"
-            start_date += 1.week
+            1.week
           when "monthly"
-            start_date += 1.month
+            1.month
           when "yearly"
-            start_date += 1.year
-        end until start_date > Date.today
+            1.year
+        end        
+      end
+      
+      def repeate_issue
+        start_date = self.start_date
+        start_date += case_periodicity
+        start_date += case_periodicity until start_date > Date.today
         due_date = start_date + (self.due_date - self.start_date)
         case self.repeating_issue.operation
           when "reopen"
