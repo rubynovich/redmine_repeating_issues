@@ -1,13 +1,12 @@
 require_dependency 'issue'
-require_dependency 'issue_status'
 
 module RepeatingIssuesPlugin
   module IssuePatch
     def self.included(base)
       base.extend(ClassMethods)
-
+      
       base.send(:include, InstanceMethods)
-
+      
       base.class_eval do
         has_one :repeating_issue, :dependent => :destroy
 
@@ -15,11 +14,11 @@ module RepeatingIssuesPlugin
       end
 
     end
-
+      
     module ClassMethods
 
     end
-
+    
     module InstanceMethods
       def case_periodicity
         case self.repeating_issue.periodicity
@@ -29,9 +28,9 @@ module RepeatingIssuesPlugin
             1.month
           when "yearly"
             1.year
-        end
+        end        
       end
-
+      
       def repeate_issue
         start_date = self.start_date
         start_date += case_periodicity

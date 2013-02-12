@@ -4,7 +4,7 @@ module RepeatingIssuesPlugin
   module WatchersHelperPatch
     def self.included(base)
       base.send(:include, InstanceMethods)
-
+      
       base.class_eval do
         alias_method_chain :watcher_tag, :repeating_issues
       end
@@ -20,11 +20,11 @@ module RepeatingIssuesPlugin
             else
               link_to(t(:button_repeating_issues_new), {:action => :new, :controller => :repeating_issues, :repeating_issue => {:issue_id => object.id}}, {:class => "icon icon-duplicate"})
             end
-          end].join(" ").html_safe
+          end].join(" ")
         else
           watcher_tag_without_repeating_issues(object, user, options)
-        end
-      end
+        end       
+      end     
     end
   end
 end

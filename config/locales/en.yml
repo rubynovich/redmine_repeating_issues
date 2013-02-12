@@ -1,3 +1,17 @@
 # English strings go here for Rails i18n
 en:
-  my_label: "My label"
+  button_repeating_issues_edit: "Edit recurrence"
+  button_repeating_issues_new: "Make recurrence"
+  field_periodicity: "Periodicity"
+  field_operation: "Way of recurrence"
+  label_repeating_issue_plural: "Repeating issues"
+  label_repeating_issue_new: "New repeating issue"
+  permission_manage_repeating_issues: "Manage repeating issues"
+  list_repeating_issues:
+    periodicity_variants:
+      weekly: "Weekly"
+      monthly: "Monthly"
+      yearly: "Yearly"
+    operation_variants:
+      recreate: "Recreate"
+      reopen: "Reopen"
