@@ -3,9 +3,9 @@ require 'redmine'
 Redmine::Plugin.register :redmine_repeating_issues do
   name 'Repeating issues'
   author 'Roman Shipiev'
-  description 'Plugin allows create repeating issues through their recreate or reopen (after closing original issue)'
+  description 'Creating repeating issues through their recreate or reopen (after closing original issue)'
   version '0.0.1'
-  url 'https://github.com/rubynovich/redmine_repeating_issues'
+  url 'https://bitbucket.org/rubynovich/redmine_repeating_issues'
   author_url 'http://roman.shipiev.me'
 
   permission :manage_repeating_issues,  :repeating_issues => [:index, :edit, :update, :destroy, :new, :create]
