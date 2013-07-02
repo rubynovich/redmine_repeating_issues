@@ -1,0 +1,19 @@
+- if @issue
+  -#&& User.current.allowed_to?(:manage_repeating_issues, @project)
+
+  #repeating_issues
+    - if @issue.author == User.current
+      .contextual
+        - if @issue.repeating_issue.present?
+          = link_to l(:button_update), {:controller => :repeating_issues, :action => :edit, :id => @issue.repeating_issue.try(:id)}, :remote => true, :method => :get, :class => "icon icon-edit"
+          = link_to l(:button_delete), {:controller => :repeating_issues, :action => :destroy, :id => @issue.repeating_issue.try(:id)}, :remote => true, :method => :delete, :class => "icon icon-del"
+        - else
+          = link_to l(:button_add), {:controller => :repeating_issues, :action => :new, :repeating_issue => {:issue_id => @issue.id}}, :remote => true, :method => :get
+
+    %h3= l(:label_repeating)
+
+    - if @issue.repeating_issue.present?
+      %p
+        = t(@issue.repeating_issue.periodicity, :scope => 'list_repeating_issues.periodicity_variants')
+        %br
+        = t(@issue.repeating_issue.operation, :scope => 'list_repeating_issues.operation_variants')

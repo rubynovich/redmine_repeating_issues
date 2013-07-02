@@ -1,0 +1,5 @@
+%h3.title=l(:label_repeating_issue_edit)
+
+= labelled_form_for @repeating_issue, :remote => true, :method => :put do |f|
+  = render :partial => 'form', :locals => {:f => f}
+  = submit_tag l(:button_update), :onclick => "hideModal(this);"

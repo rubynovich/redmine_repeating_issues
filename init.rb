@@ -1,4 +1,4 @@
-require 'redmine'
+require 'redmine_repeating_issues/hooks'
 
 Redmine::Plugin.register :redmine_repeating_issues do
   name 'Repeating issues'
@@ -8,23 +8,18 @@ Redmine::Plugin.register :redmine_repeating_issues do
   url 'https://bitbucket.org/rubynovich/redmine_repeating_issues'
   author_url 'http://roman.shipiev.me'
 
-  permission :manage_repeating_issues,  :repeating_issues => [:index, :edit, :update, :destroy, :new, :create]
+  project_module :repeating_issues do
+    permission :manage_repeating_issues,  :repeating_issues => [:index, :edit, :update, :destroy, :new, :create]
+  end
 end
 
-if Rails::VERSION::MAJOR < 3
-  require 'dispatcher'
-  object_to_prepare = Dispatcher
-else
-  object_to_prepare = Rails.configuration
-end
-
-object_to_prepare.to_prepare do
+Rails.configuration.to_prepare do
   [:watchers_helper, :issue].each do |cl|
     require "repeating_issues_#{cl}_patch"
   end
 
   [
-    [WatchersHelper, RepeatingIssuesPlugin::WatchersHelperPatch],
+#    [WatchersHelper, RepeatingIssuesPlugin::WatchersHelperPatch],
     [Issue, RepeatingIssuesPlugin::IssuePatch]
   ].each do |cl, patch|
     cl.send(:include, patch) unless cl.included_modules.include? patch

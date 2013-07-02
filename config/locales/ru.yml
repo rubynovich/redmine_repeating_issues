@@ -1,11 +1,11 @@
 # Russian strings go here for Rails i18n
 ru:
-  button_repeating_issues_edit: "Настройка цикличности"
-  button_repeating_issues_new: "Сделать циклической"
   field_periodicity: "Периодичность"
-  field_operation: "Способ зацикливания"
+  field_operation: "Способ"
   label_repeating_issue_plural: "Зацикленные задачи"
   label_repeating_issue_new: "Новая зацикленная задача"
+  label_repeating_issue_edit: "Настройка цикличности"
+  label_repeating: "Цикличность"
   permission_manage_repeating_issues: "Управление зацикленными задачами"
   list_repeating_issues:
     periodicity_variants:
