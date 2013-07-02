@@ -1,5 +1,4 @@
-- if @issue
-  -#&& User.current.allowed_to?(:manage_repeating_issues, @project)
+- if @issue && User.current.allowed_to?(:manage_repeating_issues, @project)
 
   #repeating_issues
     - if @issue.author == User.current

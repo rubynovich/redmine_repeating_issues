@@ -1,7 +1,5 @@
 # English strings go here for Rails i18n
 en:
-  button_repeating_issues_edit: "Edit recurrence"
-  button_repeating_issues_new: "Make recurrence"
   field_periodicity: "Periodicity"
   field_operation: "Way of recurrence"
   label_repeating_issue_plural: "Repeating issues"
