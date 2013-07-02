@@ -23,6 +23,8 @@ module RepeatingIssuesPlugin
     module InstanceMethods
       def case_periodicity
         case self.repeating_issue.periodicity
+          when "daily"
+            1.day
           when "weekly"
             1.week
           when "monthly"

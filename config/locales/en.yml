@@ -9,6 +9,7 @@ en:
   permission_manage_repeating_issues: "Manage repeating issues"
   list_repeating_issues:
     periodicity_variants:
+      daily: "Daily"
       weekly: "Weekly"
       monthly: "Monthly"
       yearly: "Yearly"
