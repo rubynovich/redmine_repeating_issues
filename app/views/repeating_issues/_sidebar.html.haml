@@ -4,8 +4,8 @@
     - if @issue.author == User.current
       .contextual
         - if @issue.repeating_issue.present?
-          = link_to l(:button_update), {:controller => :repeating_issues, :action => :edit, :id => @issue.repeating_issue.try(:id)}, :remote => true, :method => :get, :class => "icon icon-edit"
-          = link_to l(:button_delete), {:controller => :repeating_issues, :action => :destroy, :id => @issue.repeating_issue.try(:id)}, :remote => true, :method => :delete, :class => "icon icon-del"
+          = link_to l(:button_update), {:controller => :repeating_issues, :action => :edit, :id => @issue.repeating_issue.try(:id)}, :remote => true, :method => :get
+          = link_to l(:button_delete), {:controller => :repeating_issues, :action => :destroy, :id => @issue.repeating_issue.try(:id)}, :remote => true, :method => :delete
         - else
           = link_to l(:button_add), {:controller => :repeating_issues, :action => :new, :repeating_issue => {:issue_id => @issue.id}}, :remote => true, :method => :get
 
