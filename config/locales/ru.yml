@@ -1,5 +1,6 @@
 # Russian strings go here for Rails i18n
 ru:
+  project_module_repeating_issues: "Циклические задачи"
   field_periodicity: "Периодичность"
   field_operation: "Способ"
   label_repeating_issue_plural: "Зацикленные задачи"

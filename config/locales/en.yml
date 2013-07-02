@@ -1,5 +1,6 @@
 # English strings go here for Rails i18n
 en:
+  project_module_repeating_issues: "Repeating issues"
   field_periodicity: "Periodicity"
   field_operation: "Way of recurrence"
   label_repeating_issue_plural: "Repeating issues"
