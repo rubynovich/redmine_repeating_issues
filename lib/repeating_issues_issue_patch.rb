@@ -9,9 +9,9 @@ module RepeatingIssuesPlugin
       base.send(:include, InstanceMethods)
 
       base.class_eval do
-        has_one :repeating_issue, :dependent => :destroy
+        has_one :repeating_issue, dependent: :destroy
 
-        after_save :repeate_issue, :if => "self.closed? && self.repeating_issue.present?"
+        after_save :repeate_issue, if: -> { self.closed? && self.repeating_issue.present? }
       end
 
     end
@@ -35,21 +35,21 @@ module RepeatingIssuesPlugin
       end
 
       def repeate_issue
-        start_date = self.start_date
-        start_date += case_periodicity
-        start_date += case_periodicity until start_date > Date.today
-        due_date = start_date + (self.due_date - self.start_date)
+        new_start_date = self.start_date
+        new_start_date += case_periodicity
+        new_start_date += case_periodicity until new_start_date > Date.today
+        new_due_date = new_start_date + (self.due_date - self.start_date)
         case self.repeating_issue.operation
           when "reopen"
             self.status = IssueStatus.default
-            self.start_date = start_date
-            self.due_date = due_date
+            self.start_date = new_start_date
+            self.due_date = new_due_date
             self.save
           when "recreate"
-            new_issue = self.copy
-            new_issue.status = IssueStatus.default
-            new_issue.start_date = start_date
-            new_issue.due_date = due_date
+            new_issue = self.copy({status: IssueStatus.default, start_date: new_start_date, due_date: new_due_date}, {subtasks: false})
+#            new_issue.status = IssueStatus.default
+#            new_issue.start_date = new_start_date
+#            new_issue.due_date = new_due_date
             if new_issue.save
               rep_issue = self.repeating_issue
               rep_issue.issue = new_issue
